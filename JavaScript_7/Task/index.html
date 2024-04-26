@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Дерево директорій</title>
+<style>
+    ul {
+        list-style-type: none;
+    }
+    li {
+        cursor: pointer;
+    }
+    li:hover {
+        font-weight: bold;
+    }
+    .nested {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<ul id="folderTree">
+    <li><span class="caret">Folder 1</span>
+        <ul class="nested">
+            <li>Subfolder 1.1</li>
+            <li>Subfolder 1.2</li>
+        </ul>
+    </li>
+    <li><span class="caret">Folder 2</span>
+        <ul class="nested">
+            <li>Subfolder 2.1</li>
+            <li><span class="caret">Subfolder 2.2</span>
+                <ul class="nested">
+                    <li>File 2.2.1</li>
+                    <li>File 2.2.2</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><span class="caret">Folder 3</span>
+        <ul class="nested">
+            <li>Subfolder 3.1</li>
+            <li>Subfolder 3.2</li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var toggler = document.getElementsByClassName("caret");
+    for (var i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+    }
+</script>
+</body>
+</html>
